@@ -1,19 +1,22 @@
 version: v1.0
 name: Node.js Test Demo CI
 
+agent: # Agent definition moved to the root level
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu-2004
+
 blocks:
   - name: Build & Test
     task:
-      agent:
-        machine:
-          type: e1-standard-2  # 2 vCPUs, 8GB RAM
-          os_image: ubuntu-2004  # Ubuntu 20.04 image
       prologue:
-        - checkout  # Checkout the repository
+        commands: # Corrected prologue format
+          - checkout
       jobs:
         - name: Install dependencies and run tests
           commands:
-            - npm install  # Install dependencies
-            - npm test     # Run tests
-          test_results:
-            path: "TEST-RESULTS.xml"  # Specify the path to the test results XML file
+            - npm install
+            - npm test
+          epilogue: # added epilogue to upload test results.
+            commands:
+              - semaphore upload-test-results --junit TEST-RESULTS.xml
