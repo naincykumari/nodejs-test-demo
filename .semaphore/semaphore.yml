@@ -6,13 +6,13 @@ blocks:
     task:
       agent:
         machine:
-          type: e1-standard-2  # Define the size of the VM: 2 vCPUs, 8GB RAM
-          os_image: ubuntu-2004  # Define the OS image: Ubuntu 20.04
+          type: e1-standard-2  # 2 vCPUs, 8GB RAM (you can choose another size)
+          os_image: ubuntu-2004  # Ubuntu 20.04 image (you can choose another version)
       prologue:
-        checkout: {}  # Use `checkout` as an object in the `prologue`
+        - checkout  # The correct way to define checkout in prologue
       jobs:
         - name: Install dependencies and run tests
           commands:
-            - "npm install"  # Command to install npm dependencies
-            - "npm test"     # Command to run tests
+            - npm install  # Install npm dependencies
+            - npm test     # Run tests
 
