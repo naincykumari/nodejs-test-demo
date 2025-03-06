@@ -4,8 +4,7 @@ name: Node.js Test Demo CI
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu-2004
-
+    os_image: ubuntu2004
 blocks:
   - name: Build & Test
     task:
@@ -17,6 +16,6 @@ blocks:
           commands:
             - npm install
             - npm test
-      epilogue: # epilogue is at the task level.
+      epilogue:
         commands:
           - semaphore upload-test-results --junit TEST-RESULTS.xml
