@@ -1,0 +1,17 @@
+version: v1.0
+name: Node.js Test Demo CI
+
+blocks:
+  - name: Build & Test
+    task:
+      agent:
+        machine:
+          type: e1-standard-2  # 2 vCPUs, 8GB RAM (adjust as needed)
+          os_image: ubuntu-2004  # Ubuntu 20.04 image
+      prologue:
+        checkout: {}  # Checkout the repository before running the job
+      jobs:
+        - name: Install dependencies and run tests
+          commands:
+            - npm install  # Install npm dependencies
+            - npm test     # Run tests
