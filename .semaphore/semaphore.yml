@@ -9,7 +9,7 @@ blocks:
           type: e1-standard-2  # 2 vCPUs, 8GB RAM (you can choose another size)
           os_image: ubuntu-2004  # Ubuntu 20.04 image (you can choose another version)
       prologue:
-        - checkout  # The correct way to define checkout in prologue
+        - checkout  # Corrected prologue definition
       jobs:
         - name: Install dependencies and run tests
           commands:
