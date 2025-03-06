@@ -4,16 +4,15 @@ name: Node.js CI
 blocks:
   - name: Build & Test
     task:
+      agent:
+        machine:
+          type: e1-standard-2  # 2 vCPUs, 8GB RAM (adjust based on your needs)
+          os_image: ubuntu-2004  # Ubuntu 20.04 image
       prologue:
-        checkout: {}  # Checkout step to pull the repository
+        - checkout  # Checkout the repository before running jobs
       jobs:
         - name: Install dependencies and run tests
-          agent:
-            machine:
-              type: e1-standard-2  # 2 vCPUs, 8GB RAM (you can choose another size)
-              os_image: ubuntu-2004  # Ubuntu 20.04 image
           commands:
             - npm install  # Install npm dependencies
             - npm test     # Run tests
-
 
