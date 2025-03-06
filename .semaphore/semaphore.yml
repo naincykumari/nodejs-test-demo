@@ -6,13 +6,14 @@ blocks:
     task:
       agent:
         machine:
-          type: e1-standard-2  # 2 vCPUs, 8GB RAM (you can choose another size)
-          os_image: ubuntu-2004  # Ubuntu 20.04 image (you can choose another version)
+          type: e1-standard-2  # Choose the machine type (2 vCPUs, 8GB RAM)
+          os_image: ubuntu-2004  # Ubuntu 20.04 image
       prologue:
-        - checkout  # Corrected prologue definition
+        - checkout  # Checkout the repository code before running the job
       jobs:
         - name: Install dependencies and run tests
           commands:
-            - npm install  # Install npm dependencies
-            - npm test     # Run tests
+            - "npm install"  # Install dependencies
+            - "npm test"     # Run tests
+
 
