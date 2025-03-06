@@ -1,7 +1,7 @@
 version: v1.0
 name: Node.js Test Demo CI
 
-agent: # Agent definition moved to the root level
+agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu-2004
@@ -10,13 +10,13 @@ blocks:
   - name: Build & Test
     task:
       prologue:
-        commands: # Corrected prologue format
+        commands:
           - checkout
       jobs:
         - name: Install dependencies and run tests
           commands:
             - npm install
             - npm test
-          epilogue: # added epilogue to upload test results.
-            commands:
-              - semaphore upload-test-results --junit TEST-RESULTS.xml
+      epilogue: # epilogue is at the task level.
+        commands:
+          - semaphore upload-test-results --junit TEST-RESULTS.xml
