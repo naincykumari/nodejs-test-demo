@@ -6,10 +6,10 @@ blocks:
     task:
       agent:
         machine:
-          type: e1-standard-2  # 2 vCPUs, 8GB RAM (adjust to your needs)
+          type: e1-standard-2  # 2 vCPUs, 8GB RAM (adjust as needed)
           os_image: ubuntu-2004  # Ubuntu 20.04 image
       prologue:
-        - checkout  # Checkout repository before running jobs
+        checkout: {}  # Checkout the repository before running jobs
       jobs:
         - name: Install dependencies and run tests
           commands:
