@@ -1,5 +1,5 @@
 version: v1.0
-name: Node.js CI
+name: Node.js Test Demo CI
 
 blocks:
   - name: Build & Test
@@ -9,7 +9,7 @@ blocks:
           type: e1-standard-2  # 2 vCPUs, 8GB RAM (adjust as needed)
           os_image: ubuntu-2004  # Ubuntu 20.04 image
       prologue:
-        checkout: {}  # Checkout the repository before running jobs
+        - checkout  # Checkout the code from the repository
       jobs:
         - name: Install dependencies and run tests
           commands:
